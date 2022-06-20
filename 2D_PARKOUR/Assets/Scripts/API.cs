@@ -25,8 +25,8 @@ public class API : MonoBehaviour
     }
     private void Update()
     {
-        //print("是否按下任意鍵： " + Input.anyKey);
-        //print("遊戲經過時間： " + Time.timeSinceLevelLoad);
+        print("是否按下任意鍵： " + Input.anyKey);
+        print("遊戲經過時間： " + Time.timeSinceLevelLoad);
 
         print("<color=red>是否按下空白鍵： " + Input.GetKeyDown(KeyCode.Space) + "</color>");
 
