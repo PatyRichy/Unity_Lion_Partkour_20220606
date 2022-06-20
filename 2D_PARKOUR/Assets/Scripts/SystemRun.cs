@@ -9,16 +9,27 @@ namespace Pat
     {
         #region 資料：保存系統需要的資料
         [SerializeField, Header("跑速") , Range(0,10)]
-        private float speedRun = 3.5f;
-        [SerializeField, Header("跳躍高度"), Range(0,1000)]
-        private float heightJump = 350;
+        private float speedRun = 3f;
+      
         private Animator ani;
         private Rigidbody2D rig;
-
         #endregion
 
         #region 功能： 實作該系統的複雜方法
 
+        /// <summary>
+        /// 跑步功能
+        /// </summary>
+        private void Run()
+        {
+            rig.velocity = new Vector2(speedRun, rig.velocity.y);
+
+        }
+        private void Run_b()
+        {
+            rig.velocity = new Vector2(-speedRun, rig.velocity.y);
+
+        }
         #endregion
 
         #region 事件：程式入口
@@ -26,16 +37,25 @@ namespace Pat
         private void Awake()
         {
             ani = GetComponent<Animator>();
+            rig = GetComponent<Rigidbody2D>();
         }
 
         private void Start()
         {
-            print("hihihi");
+            //print("hihihi");
+
+          
+
         }
 
         private void Update()
         {
-            print("<color=aqua> hi </color>" );
+            if (Input.GetKey(KeyCode.RightArrow))
+                Run();
+            if (Input.GetKey(KeyCode.LeftArrow))
+                Run_b();
+          
+            //print("<color=aqua> hi </color>" );
         }
         #endregion
     }
