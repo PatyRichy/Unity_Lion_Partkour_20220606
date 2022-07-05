@@ -10,9 +10,11 @@ namespace Pat
         #region 資料：保存系統需要的資料
         [SerializeField, Header("跑速") , Range(0,10)]
         private float speedRun = 3f;
+       
       
         private Animator ani;
         private Rigidbody2D rig;
+       
         #endregion
 
         #region 功能： 實作該系統的複雜方法
@@ -38,24 +40,34 @@ namespace Pat
         {
             ani = GetComponent<Animator>();
             rig = GetComponent<Rigidbody2D>();
+           
+           
         }
 
         private void Start()
         {
             //print("hihihi");
-
-          
+           
+            
 
         }
 
         private void Update()
         {
+         
             if (Input.GetKey(KeyCode.RightArrow))
                 Run();
+      
             if (Input.GetKey(KeyCode.LeftArrow))
                 Run_b();
-          
-            //print("<color=aqua> hi </color>" );
+            
+
+            Vector3 vel = transform.InverseTransformDirection(rig.velocity);
+            vel.x *= 0.8f;
+           
+            
+
+            
         }
         #endregion
     }
