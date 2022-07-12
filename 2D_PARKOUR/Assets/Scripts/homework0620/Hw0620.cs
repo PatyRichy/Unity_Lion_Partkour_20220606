@@ -10,7 +10,7 @@ public class Hw0620 : MonoBehaviour
     public Camera cam;
     public GameObject capsule;
     public GameObject cube;
-    private Transform sphereRotate;
+    public Rigidbody caps;
 
     // Start is called before the first frame update
     void Start()
@@ -41,7 +41,10 @@ public class Hw0620 : MonoBehaviour
     {
         //習題5：讓立方體看著球體旋轉
 
-        sphereRotate.RotateAround(sphere.transform.position, Vector3.up, 100 * Time.deltaTime);
+        sphere.transform.Rotate(90, 0, 0, Space.Self);
         cube.transform.LookAt(sphere.transform.position, Vector3.right);
+
+        //習題6：膠囊體往上產生推力
+        caps.AddForce(transform.up * 100);
     }
 }
